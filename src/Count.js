@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment, incrementbyvalue } from "./Redux/Counter";
-
+import { decrement, increment, incrementbyvalue } from "./Redux-toolkit/CounterSlide";
+// import { decrement, increment, incrementbyvalue } from "./Redux/Counter";
 
 const Count = () => {
   const count = useSelector((state) => state.counter.count);
@@ -14,12 +14,13 @@ const Count = () => {
     dispatch(decrement()); // decrement
   };
   const handleIncrementby = () => {
-    dispatch(incrementbyvalue(10)); // incrementbyvalue
+    dispatch(incrementbyvalue({value:10})); // incrementbyvalue
   };
   return (
     <div>
-      <h2 className="mb-5">Count : {count}</h2>
+     
       <div className="flex justify-center items-center gap-x-5">
+      <h2 className="mb-5">Count : {count}</h2>
         <button
           className="inline-block p-2 border border-gray-200"
           onClick={handleIncrement}
@@ -31,13 +32,13 @@ const Count = () => {
           className="inline-block p-2 border border-gray-200"
           onClick={handleDecrement}
         >
-          Decrement 
+          Decrement
         </button>
         <button
           className="inline-block p-2 border border-gray-200"
           onClick={handleIncrementby}
         >
-          by 10 
+          by 10
         </button>
       </div>
     </div>
