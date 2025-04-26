@@ -1,14 +1,25 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./index.css";
-import Count from "./Count";
+import Card from "./Uis/Card";
+import { toggleDarkMode } from "./Redux-toolkit/globalSlice";
 
 function App() {
-  const { count } = useSelector((state) => state.counter);
+  // const { count } = useSelector((state) => state.counter);
+  const globalOptions = useSelector((state) => state.global);
+  const dispatch = useDispatch();
+  const handleToggleDarkMode = () => {
+dispatch(toggleDarkMode(true));
+console.log("first",globalOptions)
+  }
   return (
+    // <div>
+    //   Hello Tailwind!
+    //   <h2>the count from app is {count}</h2>
+    //   <Count />
+    // </div>
     <div>
-      Hello Tailwind!
-      <h2>the count from app is {count}</h2>
-      <Count />
+      <Card></Card>
+      <button onClick={handleToggleDarkMode}>Toggle dark mode</button>
     </div>
   );
 }
